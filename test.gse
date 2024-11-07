@@ -1,0 +1,24 @@
+=(
+  DSUM(
+    yearly_progress!$A$1:$AA,
+    F$23 & "_complete",
+    { "vertical_id"; FILTER(year_2024_from_yearly_progress, year_2024_from_yearly_progress <> "") }
+  ) +
+  DSUM(
+    year_2024_alternate_data,
+    F$23 & "_complete",
+    { "vertical_id"; "<>" }
+  )
+) /
+(
+  DSUM(
+    yearly_progress!$A$1:$AA,
+    F$23 & "_total",
+    { "vertical_id"; FILTER(year_2024_from_yearly_progress, year_2024_from_yearly_progress <> "") }
+  ) +
+  DSUM(
+    year_2024_alternate_data,
+    F$23 & "_total",
+    { "vertical_id"; "<>" }
+  )
+)
